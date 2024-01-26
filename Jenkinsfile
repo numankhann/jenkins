@@ -1,41 +1,33 @@
 pipeline {
-    agent any
-    triggers {
-        pollSCM('* * * * *') // Polls the SCM each minute
+    agent {
+        label 'master'
     }
-
+    triggers {
+        pollSCM '* * * * *'
+    }
     stages {
-        stage('Checkout') {
-            steps {
-                // Check out your Git repository
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building...'
+                echo "Building.."
                 sh '''
-                //cd myapp
-                //pip install -r requirements.txt
+                cd myapp
+                pip install -r requirements.txt
                 '''
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Testing...'
+                echo "Testing.."
                 sh '''
-                //cd myapp
-                //python3 hello.py
-                p//ython3 hello.py --name=Numan
+                cd myapp
+                python3 hello.py
+                python3 hello.py --name=Brad
                 '''
             }
         }
-
-        stage('Deploy') {
+        stage('Deliver') {
             steps {
-                echo 'Deploying...'
+                echo 'Deliver....'
                 sh '''
                 echo "doing delivery stuff.."
                 '''
