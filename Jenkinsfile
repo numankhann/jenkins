@@ -15,21 +15,30 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building...'
-                // Add your build steps here
+                sh '''
+                cd myapp
+                pip install -r requirements.txt
+                '''
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing...'
-                // Add your test steps here
+                sh '''
+                cd myapp
+                python3 hello.py
+                python3 hello.py --name=Numan
+                '''
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                // Add your deployment steps here
+                sh '''
+                echo "doing delivery stuff.."
+                '''
             }
         }
     }
