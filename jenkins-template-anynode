@@ -6,21 +6,21 @@ pipeline {
             steps {
                 echo 'Building...'
                 sh '''
-                echo "doing build stuff.."
+                echo "doing build stuff.."'''
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
                 sh '''
-                echo "doing Test stuff..
+                echo "doing Test stuff.."'''
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
                 sh '''
-                echo "doing Deploy stuff.."
+                echo "doing Deploy stuff.."'''
             }
         }
     }
